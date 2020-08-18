@@ -1,0 +1,132 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+  font-family: 'BPdotsUnicase';
+  src: url("../assets/fonts/BPdotsUnicase.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+/*-------WATCH PAGE-------*/
+
+#watch-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('../image/watch-background.png');
+    background-size: auto 100%;
+    overflow: hidden;
+}
+
+/*-------WATCH PAGE : DATE-------*/
+
+#date-bg {
+	width: 52px;
+    height: 52px;
+    top: calc(50% - 27px);
+    right: 53px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+#time-text {
+    width: auto;
+    height: auto;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: BPdotsUnicase;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	line-height: 100%;
+	letter-spacing: 0.02em;
+	position: absolute;
+	right: 5px;
+	top: 132px;
+	z-index: 10;
+}
+
+#date-text {
+    width: auto;
+    height: auto;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: BPdotsUnicase;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 100%;
+	letter-spacing: 0.02em;
+	position: absolute;
+	right: 10px;
+	top: 179px;
+	z-index: 10;
+}
+
+/*-------WATCH PAGE : HOUR-------*/
+
+.hands-hr {
+    width: 360px;
+    height: 360px;
+    position: absolute;
+    left: 0px;
+    background-size: 360px 360px;
+}
+
+#hands-hr-needle {
+    z-index: 2;
+    background-image: url('../image/watch-hour.png');
+}
+
+/*-------WATCH PAGE : MINUTE-------*/
+
+.hands-min {
+    width: 360px;
+    height: 360px;
+    position: absolute;
+    left: 0px;
+    background-size: 360px 360px;
+}
+
+#hands-min-needle {
+    z-index: 4;
+    background-image: url('../image/watch-minute.png');
+}
+
+/*-------WATCH PAGE : SECOND-------*/
+
+.hands-sec {
+    width: 360px;
+    height: 360px;
+    position: absolute;
+    left: 0px;
+    background-size: 360px 360px;
+    transition: 0.8s ease-in-out;
+}
+
+#hands-sec-needle {
+    z-index: 6;
+    background-image: url('../image/watch-second.png');
+}
+
+#logs {
+	opacity: 0;
+	background: #333333;
+	position: absolute;
+	width: 100%;
+	top: 60%;
+	font-size: 11px;
+	color: #FFFFFF;
+}

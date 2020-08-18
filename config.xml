@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:tizen="http://tizen.org/ns/widgets"
+        id="http://yourdomain/ClassicWatchTest"
+        version="1.0.0"
+        viewmodes="maximized">
+    <tizen:application id="7iiqmKR8OF.AdroWatchV2"
+                       package="7iiqmKR8OF"
+                       required_version="2.3.1"
+                       ambient_support="enable"/>
+    <author email="adrorodri@gmail.com">Adrian Mauricio Rodriguez Andrade</author>
+    <tizen:category name="http://tizen.org/category/wearable_clock"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>Adro Watch V2</name>
+    <tizen:profile name="wearable"/>
+    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>
