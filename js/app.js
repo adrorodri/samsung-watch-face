@@ -23,6 +23,9 @@
                 deactivateAmbientMode();
             }
         });
+
+        const calendar = tizen.calendar.getDefaultCalendar('EVENT');
+        showLogs(JSON.stringify(calendar));
     }
 
     function rotateElements(angle, className) {
@@ -82,20 +85,20 @@
         isAmbientMode = true;
         $("#hands-sec-needle").hide();
         $(".date-bg").hide();
-        $(".watch-bg").attr("src", "../image/watch-background-aod.png");
         $("#hands-min-needle").attr("src", "../image/watch-minute-aod.png");
         $("#hands-hr-needle").attr("src", "../image/watch-hour-aod.png");
-        $(".watch-bg").fadeTo(500, 0.6);
+        $("#watch-bg").attr("src", "../image/watch-background-aod.png");
+        $("#watch-bg").fadeTo(500, 0.3);
     }
 
     function deactivateAmbientMode() {
         isAmbientMode = false;
         $("#hands-sec-needle").show();
         $(".date-bg").show();
-        $(".watch-bg").attr("src", "../image/watch-background.png");
         $("#hands-min-needle").attr("src", "../image/watch-minute.png");
         $("#hands-hr-needle").attr("src", "../image/watch-hour.png");
-        $(".watch-bg").fadeTo(500, 1);
+        $("#watch-bg").attr("src", "../image/watch-background.png");
+        $("#watch-bg").fadeTo(500, 1);
     }
 
     function showLogs(logs) {
