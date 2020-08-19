@@ -1,6 +1,7 @@
 (function () {
     let timerUpdateDate = 0;
     let isAmbientMode = false;
+    let interval;
 
     function init() {
         updateDate(0);
@@ -23,9 +24,6 @@
                 deactivateAmbientMode();
             }
         });
-
-        const calendar = tizen.calendar.getDefaultCalendar('EVENT');
-        showLogs(JSON.stringify(calendar));
     }
 
     function rotateElements(angle, className) {
@@ -76,28 +74,34 @@
         // Update the hour/minute/second hands
         rotateElements((hour + (minute / 60) + (second / 3600)) * 30, "#hands-hr-needle");
         rotateElements((minute + second / 60) * 6, "#hands-min-needle");
+        clearInterval(interval);
         if (!isAmbientMode) {
+            let anim = 0.1;
             rotateElements(second * 6, "#hands-sec-needle");
+            interval = setInterval(() => {
+                rotateElements((second + anim) * 6, "#hands-sec-needle");
+                anim += 0.1;
+            }, 100);
         }
     }
 
     function activateAmbientMode() {
         isAmbientMode = true;
         $("#hands-sec-needle").hide();
-        $(".date-bg").hide();
         $("#hands-min-needle").attr("src", "../image/watch-minute-aod.png");
         $("#hands-hr-needle").attr("src", "../image/watch-hour-aod.png");
-        $("#watch-bg").attr("src", "../image/watch-background-aod.png");
+        $("#watch-bg").attr("src", "../image/background-aod.png");
+        $("#controls").attr("src", "../image/foreground-aod.png");
         $("#watch-bg").fadeTo(500, 0.3);
     }
 
     function deactivateAmbientMode() {
         isAmbientMode = false;
         $("#hands-sec-needle").show();
-        $(".date-bg").show();
         $("#hands-min-needle").attr("src", "../image/watch-minute.png");
         $("#hands-hr-needle").attr("src", "../image/watch-hour.png");
-        $("#watch-bg").attr("src", "../image/watch-background.png");
+        $("#watch-bg").attr("src", "../image/background.png");
+        $("#controls").attr("src", "../image/foreground.png");
         $("#watch-bg").fadeTo(500, 1);
     }
 
