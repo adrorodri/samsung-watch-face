@@ -4,11 +4,16 @@
     let interval;
 
     function init() {
-        updateDate(0);
+        updateBattery()
 
+        updateDate(0);
         setInterval(function () {
             updateTime();
         }, 1000);
+
+        setInterval(function () {
+            updateBattery();
+        }, 60 * 1000)
 
         document.addEventListener("visibilitychange", function () {
             if (!document.hidden) {
@@ -24,6 +29,30 @@
                 deactivateAmbientMode();
             }
         });
+
+    }
+
+    function onBatteryResponse(battery) {
+        batteryLevel = Math.trunc(battery.level * 100);
+        batteryIsCharging = battery.isCharging;
+        $("#battery-text").html(batteryLevel);
+        if (battery.isCharging) {
+            $("#battery-icon").css("background-image", "url(../image/battery/battery-charging.png)");
+        } else if (batteryLevel < 10){
+            $("#battery-icon").css("background-image", "url(../image/battery/battery-empty.png)");
+        } else if (batteryLevel < 30){
+            $("#battery-icon").css("background-image", "url(../image/battery/battery-low.png)");
+        } else if (batteryLevel < 60){
+            $("#battery-icon").css("background-image", "url(../image/battery/battery-level.png)");
+        } else if (batteryLevel < 85){
+            $("#battery-icon").css("background-image", "url(../image/battery/battery-charged.png)");
+        } else if (batteryLevel >= 100){
+            $("#battery-icon").css("background-image", "url(../image/battery/battery-full.png)");
+        }
+    }
+
+    function updateBattery() {
+        tizen.systeminfo.getPropertyValue('BATTERY', onBatteryResponse);
     }
 
     function rotateElements(angle, className) {
@@ -67,7 +96,7 @@
         const minute = datetime.getMinutes();
         const second = datetime.getSeconds();
 
-        const separator = datetime.getSeconds() % 2 === 0 ? ":" : " ";
+        const separator = second % 2 === 0 ? ":" : " ";
 
         $("#time-text").html(padStart(hour.toString()) + separator + padStart(minute.toString()));
 
@@ -88,20 +117,20 @@
     function activateAmbientMode() {
         isAmbientMode = true;
         $("#hands-sec-needle").hide();
-        $("#hands-min-needle").attr("src", "../image/watch-minute-aod.png");
-        $("#hands-hr-needle").attr("src", "../image/watch-hour-aod.png");
-        $("#watch-bg").attr("src", "../image/background-aod.png");
-        $("#controls").attr("src", "../image/foreground-aod.png");
+        $("#hands-min-needle").css("background-image", "url(../image/watch-minute-aod.png)");
+        $("#hands-hr-needle").css("background-image", "url(../image/watch-hour-aod.png)");
+        $("#watch-bg").css("background-image", "url(../image/background-aod.png)");
+        $("#controls").css("background-image", "url(../image/foreground-aod.png)");
         $("#watch-bg").fadeTo(500, 0.3);
     }
 
     function deactivateAmbientMode() {
         isAmbientMode = false;
         $("#hands-sec-needle").show();
-        $("#hands-min-needle").attr("src", "../image/watch-minute.png");
-        $("#hands-hr-needle").attr("src", "../image/watch-hour.png");
-        $("#watch-bg").attr("src", "../image/background.png");
-        $("#controls").attr("src", "../image/foreground.png");
+        $("#hands-min-needle").css("background-image", "url(../image/watch-minute.png)");
+        $("#hands-hr-needle").css("background-image", "url(../image/watch-hour.png)");
+        $("#watch-bg").css("background-image", "url(../image/background.png)");
+        $("#controls").css("background-image", "url(../image/foreground.png)");
         $("#watch-bg").fadeTo(500, 1);
     }
 

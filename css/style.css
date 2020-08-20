@@ -85,6 +85,36 @@ html, body {
 	z-index: 10;
 }
 
+#battery-text {
+    width: auto;
+    height: auto;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: BPdotsUnicase;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    position: absolute;
+    left: 51%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+#battery-icon {
+    background-image: url(../image/battery/battery-charged.png);
+    position: absolute;
+    left: calc(50% + 1px);
+    top: 47%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 46px;
+    height: 46px;
+    background-size: 46px 46px;
+}
+
 /*-------WATCH PAGE : HOUR-------*/
 
 #hands-hr-needle {
