@@ -3,10 +3,10 @@
 }
 
 @font-face {
-  font-family: 'BPdotsUnicase';
-  src: url("../assets/fonts/BPdotsUnicase.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'BPdotsUnicase';
+    src: url("../assets/fonts/BPdotsUnicase.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 html, body {
@@ -23,6 +23,7 @@ html, body {
     height: 100%;
     position: absolute;
     background-image: url('../image/background.png');
+    transition: background 3s ease-in-out;
     background-size: auto 100%;
     overflow: hidden;
 }
@@ -40,7 +41,7 @@ html, body {
 /*-------WATCH PAGE : DATE-------*/
 
 #date-bg {
-	width: 52px;
+    width: 52px;
     height: 52px;
     top: calc(50% - 27px);
     right: 53px;
@@ -57,15 +58,15 @@ html, body {
     text-align: center;
     color: #FFFFFF;
     font-family: BPdotsUnicase;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 40px;
-	line-height: 100%;
-	letter-spacing: 0.02em;
-	position: absolute;
-	right: 5px;
-	top: 132px;
-	z-index: 10;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    position: absolute;
+    right: 17px;
+    top: 133px;
+    z-index: 15;
 }
 
 #date-text {
@@ -74,15 +75,15 @@ html, body {
     text-align: center;
     color: #FFFFFF;
     font-family: BPdotsUnicase;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 30px;
-	line-height: 100%;
-	letter-spacing: 0.02em;
-	position: absolute;
-	right: 10px;
-	top: 179px;
-	z-index: 10;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    position: absolute;
+    right: 19px;
+    top: 182px;
+    z-index: 15;
 }
 
 #battery-text {
@@ -93,26 +94,14 @@ html, body {
     font-family: BPdotsUnicase;
     font-style: normal;
     font-weight: normal;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 100%;
     letter-spacing: 0.02em;
     position: absolute;
-    left: 51%;
+    left: 53%;
     top: 53%;
     transform: translate(-50%, -50%);
     z-index: 10;
-}
-
-#battery-icon {
-    background-image: url(../image/battery/battery-charged.png);
-    position: absolute;
-    left: calc(50% + 1px);
-    top: 47%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    width: 46px;
-    height: 46px;
-    background-size: 46px 46px;
 }
 
 /*-------WATCH PAGE : HOUR-------*/
@@ -154,11 +143,11 @@ html, body {
 #logs {
     display: none;
     z-index: 20;
-	background: #333333;
-	position: absolute;
-	width: 100%;
-	top: 60%;
-	font-size: 11px;
+    background: #333333;
+    position: absolute;
+    width: 100%;
+    top: 60%;
+    font-size: 11px;
     text-align: center;
-	color: #FFFFFF;
+    color: #FFFFFF;
 }

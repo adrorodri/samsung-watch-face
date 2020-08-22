@@ -15,6 +15,20 @@
             updateBattery();
         }, 60 * 1000)
 
+        setTimeout(function () {
+            setInterval(function () {
+                if (!isAmbientMode) {
+                    $("#watch-bg").css("background-image", "url(../image/background-anim.png)");
+                }
+            }, 8 * 1000)
+        }, 4 * 1000)
+
+        setInterval(function () {
+            if (!isAmbientMode) {
+                $("#watch-bg").css("background-image", "url(../image/background.png)");
+            }
+        }, 8 * 1000)
+
         document.addEventListener("visibilitychange", function () {
             if (!document.hidden) {
                 updateTime();
@@ -36,19 +50,6 @@
         batteryLevel = Math.trunc(battery.level * 100);
         batteryIsCharging = battery.isCharging;
         $("#battery-text").html(batteryLevel);
-        if (battery.isCharging) {
-            $("#battery-icon").css("background-image", "url(../image/battery/battery-charging.png)");
-        } else if (batteryLevel < 10){
-            $("#battery-icon").css("background-image", "url(../image/battery/battery-empty.png)");
-        } else if (batteryLevel < 30){
-            $("#battery-icon").css("background-image", "url(../image/battery/battery-low.png)");
-        } else if (batteryLevel < 60){
-            $("#battery-icon").css("background-image", "url(../image/battery/battery-level.png)");
-        } else if (batteryLevel < 85){
-            $("#battery-icon").css("background-image", "url(../image/battery/battery-charged.png)");
-        } else if (batteryLevel >= 100){
-            $("#battery-icon").css("background-image", "url(../image/battery/battery-full.png)");
-        }
     }
 
     function updateBattery() {
