@@ -4,8 +4,8 @@
     let interval;
 
     function init() {
-        updateBattery()
-
+        updateBattery();
+        updateHR();
         updateDate(0);
         setInterval(function () {
             updateTime();
@@ -14,20 +14,6 @@
         setInterval(function () {
             updateBattery();
         }, 60 * 1000)
-
-        setTimeout(function () {
-            setInterval(function () {
-                if (!isAmbientMode) {
-                    $("#watch-bg").css("background-image", "url(../image/background-anim.png)");
-                }
-            }, 8 * 1000)
-        }, 4 * 1000)
-
-        setInterval(function () {
-            if (!isAmbientMode) {
-                $("#watch-bg").css("background-image", "url(../image/background.png)");
-            }
-        }, 8 * 1000)
 
         document.addEventListener("visibilitychange", function () {
             if (!document.hidden) {
@@ -54,6 +40,9 @@
 
     function updateBattery() {
         tizen.systeminfo.getPropertyValue('BATTERY', onBatteryResponse);
+    }
+
+    function updateHR() {
     }
 
     function rotateElements(angle, className) {
@@ -120,9 +109,11 @@
         $("#hands-sec-needle").hide();
         $("#hands-min-needle").css("background-image", "url(../image/watch-minute-aod.png)");
         $("#hands-hr-needle").css("background-image", "url(../image/watch-hour-aod.png)");
-        $("#watch-bg").css("background-image", "url(../image/background-aod.png)");
         $("#controls").css("background-image", "url(../image/foreground-aod.png)");
-        $("#watch-bg").fadeTo(500, 0.3);
+        $("#watch-bg").css("transition", "unset");
+        $("#watch-bg").css("height", "200%");
+        $("#watch-bg").css("width", "200%");
+        $("#watch-bg").css("background-image", "url(../image/background-aod.png)");
     }
 
     function deactivateAmbientMode() {
@@ -130,9 +121,11 @@
         $("#hands-sec-needle").show();
         $("#hands-min-needle").css("background-image", "url(../image/watch-minute.png)");
         $("#hands-hr-needle").css("background-image", "url(../image/watch-hour.png)");
-        $("#watch-bg").css("background-image", "url(../image/background.png)");
         $("#controls").css("background-image", "url(../image/foreground.png)");
-        $("#watch-bg").fadeTo(500, 1);
+        $("#watch-bg").css("transition", "all 700ms ease-in-out");
+        $("#watch-bg").css("height", "100%");
+        $("#watch-bg").css("width", "100%");
+        $("#watch-bg").css("background-image", "url(../image/background.png)");
     }
 
     function showLogs(logs) {
